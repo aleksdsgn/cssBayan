@@ -1,58 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@500;800&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    border: 1px solid salmon;
+    /* border: 1px solid salmon; */
+}
+
+body {
+    font-family: 'Martian Mono', 'Courier New', Courier, monospace;
+    background-color: rgb(221, 242, 243);
 }
 
 .main {
-    width: 800px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .main__title {
-
+    padding: .7em 0;
+    font-weight: 800;
 }
 
 .accordion {
-    /* list-style-type: none; */
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 
 .accordion__item {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .accordion__input {
     display: none;
+    width: 100%;
 }
-
 
 .accordion__title-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 2em;
+    width: 100%;
+    padding: .6em 0;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    
 }
 
 .accordion__title {
     width: 80%;
-    font-size: 2em;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
 .accordion__close-button {
+    display: none;
+    width: 1em;
+    height: 1em;
+}
+
+/* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
+.main:hover .accordion__close-button {
     display: block;
-    width: 2em;
-    height: 2em;
+}
+
+.accordion__input:checked + .accordion__title-wrapper .accordion__close-button {
+    transform: rotate(45deg);
 }
 
 .accordion__image {
-    /* убрать пиксели */
-    width: 200px;
+    max-width: 100%;
+    padding-bottom: 1.7em;
 }
 
+/* прятать картинки у НЕ отмеченого пункта */
 .accordion__input:not(:checked) ~ .accordion__image {
     display: none;
 }
