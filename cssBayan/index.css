@@ -18,7 +18,7 @@ body {
 }
 
 .main__title {
-    padding: .7em 0;
+    padding: .7rem 0;
     font-weight: 800;
 }
 
@@ -41,23 +41,23 @@ body {
 .accordion__title-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    padding: .6em 0;
+    padding: .6rem 0;
     border-top: 1px solid rgba(0, 0, 0, .2);
-    
 }
 
 .accordion__title {
-    width: 80%;
-    font-size: 1em;
+    width: 90%;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .accordion__close-button {
     display: none;
-    width: .8em;
-    height: .8em;
+    width: .8rem;
+    height: .8rem;
+    /* padding-left: 1rem; */
 }
 
 /* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
@@ -71,10 +71,16 @@ body {
 
 .accordion__image {
     max-width: 100%;
-    padding-bottom: 1.7em;
+    padding-bottom: 1.7rem;
 }
 
 /* прятать картинки у НЕ отмеченого пункта */
 .accordion__input:not(:checked) ~ .accordion__image {
     display: none;
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
 }
