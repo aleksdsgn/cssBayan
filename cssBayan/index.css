@@ -25,6 +25,7 @@ body {
 .accordion {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .accordion__item {
@@ -45,6 +46,7 @@ body {
     width: 100%;
     padding: .6rem 0;
     border-top: 1px solid rgba(0, 0, 0, .2);
+    cursor: pointer;
 }
 
 .accordion__title {
@@ -57,7 +59,6 @@ body {
     display: none;
     width: .8rem;
     height: .8rem;
-    /* padding-left: 1rem; */
 }
 
 /* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
@@ -79,6 +80,48 @@ body {
     display: none;
 }
 
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 24px;
+    }
+
+    .main {
+        width: 60%;
+    }
+
+    .accordion__image {
+        max-width: 60%;
+    }
+
+    .accordion__title {
+        color: rgb(8, 180, 189);
+    }
+
+    /* заголовок у отмеченного должен быть черный */
+    .accordion__input:checked  + .accordion__title-wrapper .accordion__title {
+        color: rgb(0, 0, 0);
+    }
+
+    /* при наведении на аккардеон заголовок у всех остальных должен стать черным */
+    .main:hover .accordion__title {
+        color: rgb(0, 0, 0);
+    }
+
+    /* показ картинки при наведении на заголовок */
+    .accordion__item:hover .accordion__image {
+        display: block;
+    }
+
+    /* поворот крестика при наведении на заголовок */
+    .accordion__item:hover .accordion__close-button {
+        transform: rotate(45deg);
+    }
+
+    /* в момент клика заголовок меняет цвет */
+    .accordion__item:active .accordion__title-wrapper .accordion__title {
+        color: rgb(8, 180, 189););
+    }
+}
 
 @media screen and (max-width: 820px) {
     html {
