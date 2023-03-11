@@ -50,14 +50,14 @@ body {
 
 .accordion__title {
     width: 80%;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 500;
 }
 
 .accordion__close-button {
     display: none;
-    width: 1em;
-    height: 1em;
+    width: .8em;
+    height: .8em;
 }
 
 /* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
