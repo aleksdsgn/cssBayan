@@ -39,6 +39,14 @@ body {
     width: 100%;
 }
 
+.accordion__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
 .accordion__title-wrapper {
     display: flex;
     justify-content: space-between;
@@ -46,7 +54,7 @@ body {
     width: 100%;
     padding: .6rem 0;
     border-top: 1px solid rgba(0, 0, 0, .2);
-    cursor: pointer;
+    
 }
 
 .accordion__title {
@@ -59,6 +67,7 @@ body {
     display: none;
     width: .8rem;
     height: .8rem;
+    transition: all .5s cubic-bezier(.45,.27,.14,.94);
 }
 
 /* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
@@ -67,16 +76,17 @@ body {
 }
 
 .accordion__input:checked + .accordion__title-wrapper .accordion__close-button {
-    transform: rotate(45deg);
+    transform: rotate(135deg);
 }
 
 .accordion__image {
     max-width: 100%;
     padding-bottom: 1.7rem;
+    transition: all .5s cubic-bezier(.45,.27,.14,.94);
 }
 
 /* прятать картинки у НЕ отмеченого пункта */
-.accordion__input:not(:checked) ~ .accordion__image {
+.accordion__input:not(:checked) ~ .accordion__content .accordion__image {
     display: none;
 }
 
@@ -98,7 +108,7 @@ body {
     }
 
     /* заголовок у отмеченного должен быть черный */
-    .accordion__input:checked  + .accordion__title-wrapper .accordion__title {
+    .accordion__input:checked  + .accordion__content .accordion__title-wrapper .accordion__title {
         color: rgb(0, 0, 0);
     }
 
@@ -107,19 +117,23 @@ body {
         color: rgb(0, 0, 0);
     }
 
+    /* поворот крестика при наведении на заголовок */
+    .accordion__item:hover .accordion__close-button {
+        transform: rotate(135deg);
+    }
+    
+    /* в момент клика заголовок меняет цвет */
+    .accordion__item:active .accordion__title-wrapper .accordion__title {
+        color: rgb(8, 180, 189);
+    }
+
     /* показ картинки при наведении на заголовок */
-    .accordion__item:hover .accordion__image {
+    .accordion__input:hover ~ .accordion__content .accordion__image {
         display: block;
     }
 
-    /* поворот крестика при наведении на заголовок */
-    .accordion__item:hover .accordion__close-button {
-        transform: rotate(45deg);
-    }
-
-    /* в момент клика заголовок меняет цвет */
-    .accordion__item:active .accordion__title-wrapper .accordion__title {
-        color: rgb(8, 180, 189););
+    .accordion__image:hover {
+        opacity: .8;
     }
 }
 
