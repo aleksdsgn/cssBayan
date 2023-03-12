@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@500;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Martian Mono', 'Courier New', Courier, monospace;
+    background-color: rgb(221, 242, 243);
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main__title {
+    padding: .7rem 0;
+    font-weight: 800;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.accordion__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.accordion__input {
+    display: none;
+    width: 100%;
+}
+
+.accordion__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.accordion__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: .6rem 0;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+}
+
+.accordion__title {
+    width: 90%;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* при наведении на аккардеон заголовок у всех остальных должен стать черным */
+.main:hover .accordion__title {
+    color: rgb(0, 0, 0);
+}
+
+.accordion__close-button {
+    width: 0;
+    height: 0;
+    transition: all .5s cubic-bezier(.45,.27,.14,.94);
+}
+
+/* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
+.main:hover .accordion__close-button {
+    width: .8rem;
+    height: .8rem;
+}
+
+.accordion__input:checked + .accordion__content .accordion__close-button {
+    transform: rotate(135deg);
+}
+
+.accordion__image {
+    transition: all 0.2s ease;
+    display: block;
+    width: 0;
+}
+
+/* показать картинку у отмечененного пункта*/
+.accordion__input:checked ~ .accordion__content .accordion__image {
+    display: block;
+    width: 60%;
+    padding-bottom: 2rem;
+}
+
+@media (hover: hover) {
+    /* поворот крестика при наведении на заголовок */
+    .accordion__item:hover .accordion__close-button {
+        transform: rotate(135deg);
+    }
+
+    /* показ картинки при наведении на заголовок */
+    .accordion__input:hover ~ .accordion__content .accordion__image {
+        display: block;
+        width: 60%;
+        transition: all .5s ease-in-out;
+        padding-bottom: 2rem;
+    }
+
+    .accordion__image:hover {
+        opacity: .7;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: 24px;
+    }
+
+    .main {
+        width: 60%;
+    }
+
+    .accordion__title {
+        color: rgb(8, 180, 189);
+    }
+
+    /* заголовок у отмеченного должен быть черный */
+    .accordion__input:checked  + .accordion__content .accordion__title-wrapper .accordion__title {
+        color: rgb(0, 0, 0);
+    }
+
+    /* в момент клика заголовок меняет цвет */
+    .accordion__item:active .accordion__title-wrapper .accordion__title {
+        color: rgb(8, 180, 189);
+    }
+}
+
+@media screen and (max-width: 820px) {
+    html {
+        font-size: 20px;
+    }
+
+    .main {
+        width: 80%;
+    }
+
+    .main__title {
+        padding: 1.7rem 0;
+    }
+
+    .accordion__input:checked ~ .accordion__content .accordion__image {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    .accordion__input:checked ~ .accordion__content .accordion__image {
+        width: 100%;
+    }
+}
