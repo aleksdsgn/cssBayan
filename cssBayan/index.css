@@ -4,7 +4,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* border: 1px solid salmon; */
 }
 
 body {
@@ -54,7 +53,6 @@ body {
     width: 100%;
     padding: .6rem 0;
     border-top: 1px solid rgba(0, 0, 0, .2);
-    
 }
 
 .accordion__title {
@@ -63,31 +61,57 @@ body {
     font-weight: 500;
 }
 
+/* при наведении на аккардеон заголовок у всех остальных должен стать черным */
+.main:hover .accordion__title {
+    color: rgb(0, 0, 0);
+}
+
 .accordion__close-button {
-    display: none;
-    width: .8rem;
-    height: .8rem;
+    width: 0;
+    height: 0;
     transition: all .5s cubic-bezier(.45,.27,.14,.94);
 }
 
 /* мобильная версия: при нажатии в области аккордеона показывать кнопку Х */
 .main:hover .accordion__close-button {
-    display: block;
+    width: .8rem;
+    height: .8rem;
 }
 
-.accordion__input:checked + .accordion__title-wrapper .accordion__close-button {
+.accordion__input:checked + .accordion__content .accordion__close-button {
     transform: rotate(135deg);
 }
 
 .accordion__image {
-    max-width: 100%;
-    padding-bottom: 1.7rem;
-    transition: all .5s cubic-bezier(.45,.27,.14,.94);
+    transition: all 0.2s ease;
+    display: block;
+    width: 0;
 }
 
-/* прятать картинки у НЕ отмеченого пункта */
-.accordion__input:not(:checked) ~ .accordion__content .accordion__image {
-    display: none;
+/* показать картинку у отмечененного пункта*/
+.accordion__input:checked ~ .accordion__content .accordion__image {
+    display: block;
+    width: 60%;
+    padding-bottom: 2rem;
+}
+
+@media (hover: hover) {
+    /* поворот крестика при наведении на заголовок */
+    .accordion__item:hover .accordion__close-button {
+        transform: rotate(135deg);
+    }
+
+    /* показ картинки при наведении на заголовок */
+    .accordion__input:hover ~ .accordion__content .accordion__image {
+        display: block;
+        width: 60%;
+        transition: all .5s ease-in-out;
+        padding-bottom: 2rem;
+    }
+
+    .accordion__image:hover {
+        opacity: .7;
+    }
 }
 
 @media screen and (max-width: 1920px) {
@@ -99,10 +123,6 @@ body {
         width: 60%;
     }
 
-    .accordion__image {
-        max-width: 60%;
-    }
-
     .accordion__title {
         color: rgb(8, 180, 189);
     }
@@ -112,28 +132,9 @@ body {
         color: rgb(0, 0, 0);
     }
 
-    /* при наведении на аккардеон заголовок у всех остальных должен стать черным */
-    .main:hover .accordion__title {
-        color: rgb(0, 0, 0);
-    }
-
-    /* поворот крестика при наведении на заголовок */
-    .accordion__item:hover .accordion__close-button {
-        transform: rotate(135deg);
-    }
-    
     /* в момент клика заголовок меняет цвет */
     .accordion__item:active .accordion__title-wrapper .accordion__title {
         color: rgb(8, 180, 189);
-    }
-
-    /* показ картинки при наведении на заголовок */
-    .accordion__input:hover ~ .accordion__content .accordion__image {
-        display: block;
-    }
-
-    .accordion__image:hover {
-        opacity: .8;
     }
 }
 
@@ -150,13 +151,17 @@ body {
         padding: 1.7rem 0;
     }
 
-    .accordion__image {
-        max-width: 80%;
+    .accordion__input:checked ~ .accordion__content .accordion__image {
+        width: 80%;
     }
 }
 
 @media screen and (max-width: 480px) {
     html {
         font-size: 15px;
+    }
+
+    .accordion__input:checked ~ .accordion__content .accordion__image {
+        width: 100%;
     }
 }
